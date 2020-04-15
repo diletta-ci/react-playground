@@ -1,2 +1,2 @@
 # react-playground
-Playground to practising React
+Playground to practise React.js
