@@ -28,12 +28,13 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "style-loader": "^0.23.0",
-    "webpack": "^4.19.1",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.11"
+    "webpack-dev-server": "^3.1.11",
+    "react-hot-loader": "^4.12.20",
+    "@hot-loader/react-dom": "^16.8.6"
   },
   "dependencies": {
-    "react-hot-loader": "^4.12.20",
     "serialize-javascript": "^3.0.0"
   }
 }
