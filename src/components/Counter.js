@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style/Counter.css';
+import '../style/Counter.css';
 
 function Button(props) {
     const handleClick = () => props.onClickFunction(props.increment);

@@ -1,7 +1,8 @@
 .counter-component-container {
     display: flex;
+    align-items: center;
 }
 
 .counter-component-container > * {
-    margin: 0 0.5rem;
+    margin: 2rem 0.5rem;
 }

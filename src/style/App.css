@@ -1,22 +1,30 @@
+html {
+    background: #cfd9df;
+    background: -webkit-linear-gradient(to right, #cfd9df, #e2ebf0);
+    background: linear-gradient(to right, #cfd9df, #e2ebf0);
+}
+
 .App {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 62%;
-    margin: 1rem;
+    margin: 2rem 0;
 }
 
 h1 {
-    font-size: 7rem;
-    line-height: 9rem;
+    font-size: 6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 2rem;
 }
 
 h2 {
-    font-size: 4rem;
-    line-height: 6rem;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 p {
     font-size: 2rem;
-    line-height: 4rem;
 }
 
 
@@ -45,8 +53,9 @@ button:hover {
     background: #fff;
 }
 
-.playground-container {
+.playground-container > div {
     color: white;
     background-color: #0064739e;
-    padding: 1rem;
+    padding: 3rem 2rem;
+    margin-top: 3rem;
 }
