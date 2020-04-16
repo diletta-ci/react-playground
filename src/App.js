@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
-import './App.css';
+import { hot } from 'react-hot-loader/root';
+
+// Style
+import './style/reset.css';
+import './style/App.css';
+
+// Games
 import Counter from './Counter.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1> Hello, World! </h1>
+        <h1> My React Playground </h1>
 
         <div className="playground-container">
             <div className="counter">
+                <h2>Counter component</h2>
                 <Counter />
             </div>
         </div>
@@ -20,4 +26,4 @@ class App extends Component {
   }
 }
 
-export default hot(module)(App);
+export default hot(App);

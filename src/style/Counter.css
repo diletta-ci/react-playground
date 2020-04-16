@@ -1,0 +1,7 @@
+.counter-component-container {
+    display: flex;
+}
+
+.counter-component-container > * {
+    margin: 0 0.5rem;
+}
