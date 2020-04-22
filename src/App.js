@@ -8,6 +8,7 @@ import './style/App.css';
 // Games components
 import Counter from './components/Counter.js';
 import GitHubCards from './components/GitHubCards.js';
+import StarMatchGameApp from './components/StarMatchGame.js';
 
 class App extends Component {
   render() {
@@ -23,6 +24,11 @@ class App extends Component {
 
             <div className="github-cards-app">
                 <GitHubCards />
+            </div>
+
+            <div className="star-match-game-app">
+                <h2>Star Match game app</h2>
+                <StarMatchGameApp />
             </div>
         </div>
 

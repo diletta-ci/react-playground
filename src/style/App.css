@@ -23,6 +23,11 @@ h2 {
     text-transform: uppercase;
 }
 
+h3 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 p {
     font-size: 2rem;
 }
