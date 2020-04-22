@@ -7,6 +7,7 @@ import './style/App.css';
 
 // Games components
 import Counter from './components/Counter.js';
+import GitHubCards from './components/GitHubCards.js';
 
 class App extends Component {
   render() {
@@ -21,7 +22,7 @@ class App extends Component {
             </div>
 
             <div className="github-cards-app">
-                <h2>GitHub cards app</h2>
+                <GitHubCards />
             </div>
         </div>
 
