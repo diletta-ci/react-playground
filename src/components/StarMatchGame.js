@@ -13,12 +13,34 @@ const Star = props => {
 
 const GamePad = props => {
     return (
-        <button className="number" onClick={() => console.log('Num', props.number)}>{props.number}</button>
+        <button
+            className="number"
+            style={{ backgroundColor: colors[props.state] }}
+            onClick={() => console.log('Num', props.number)}
+        >
+            {props.number}
+        </button>
     )
 }
 
 const StarMatch = () => {
     const [stars, setStars] = useState(utils.random(1, 9));
+    const [availableNumbers, setAvailableNumbers] = useState(utils.range(1, 9));
+    const [candidateNumbers, setCandidateNumbers] = useState([]);
+
+    const candidateAreWrong = utils.sum(candidateNumbers) > stars;
+
+    const numberStatus = (number) => {
+        if (!availableNumbers.includes(number)) {
+            return 'used';
+        }
+
+        if (candidateNumbers.includes(number)) {
+            return candidateAreWrong ? 'wrong' : 'canditate';
+        }
+
+        return 'available';
+    };
 
 	return (
 		<div className="star-match-game-app-container">
@@ -30,7 +52,11 @@ const StarMatch = () => {
 
             <div className="numbers-container">
                 {utils.range(1, 9).map(number =>
-                    <GamePad key={number} className="number" number={number} />
+                    <GamePad
+                        key={number}
+                        state={numberStatus(number)}
+                        number={number}
+                    />
                 )}
             </div>
 		</div>
@@ -43,10 +69,10 @@ const StarMatch = () => {
 
 // Color Theme
 const colors = {
-	available: 'lightgray',
-	used: 'lightgreen',
-	wrong: 'lightcoral',
-	candidate: 'deepskyblue',
+	available: '#a0a0a0',
+	used: '#16b18d',
+	wrong: '#f22567',
+	candidate: '#4fbfd1',
 };
 
 // Math science
