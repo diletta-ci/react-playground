@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../style/StarMatchGame.css';
 
+const Star = props => {
+    return (
+        <div className="stars-container">
+            {utils.range(1, props.count).map(starId =>
+                <div key={starId} className="star" />
+            )}
+        </div>
+    )
+};
+
+const GamePad = props => {
+    return (
+        <button className="number" onClick={() => console.log('Num', props.number)}>{props.number}</button>
+    )
+}
 
 const StarMatch = () => {
-	const stars = utils.random(1, 9);
+    const [stars, setStars] = useState(utils.random(1, 9));
 
 	return (
 		<div className="star-match-game-app-container">
@@ -11,16 +26,13 @@ const StarMatch = () => {
 			<h3>Pick 1 or more numbers that sum to the number of stars</h3>
 		</div>
 		<div className="star-game">
-			<div className="stars-container">
-				{utils.range(1, stars).map(starId =>
-					<div key={starId} className="star" />
-				)}
-			</div>
-			<div className="numbers-container">
-				{utils.range(1, 9).map(number =>
-					<button key={number} className="number">{number}</button>
-				)}
-			</div>
+			<Star count={stars} />
+
+            <div className="numbers-container">
+                {utils.range(1, 9).map(number =>
+                    <GamePad key={number} className="number" number={number} />
+                )}
+            </div>
 		</div>
 		<div className="timer">
 			<h3>Time Remaining: 10</h3>
