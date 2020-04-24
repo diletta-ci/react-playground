@@ -23,16 +23,17 @@
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@hot-loader/react-dom": "^16.8.6",
     "babel-loader": "^8.0.2",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.20",
     "style-loader": "^0.23.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.11",
-    "react-hot-loader": "^4.12.20",
-    "@hot-loader/react-dom": "^16.8.6"
+    "webpack-dev-server": "^3.1.11"
   },
   "dependencies": {
     "serialize-javascript": "^3.0.0"
