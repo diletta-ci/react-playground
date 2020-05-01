@@ -55,6 +55,7 @@
 
 .game-done {
     display: flex;
+    flex-direction: column;
 }
 
 .game-done button {
