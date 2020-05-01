@@ -37,7 +37,8 @@ const PlayAgain = props => {
     )
 }
 
-const Game = props => {
+// Custom Hook
+const useGameState = () => {
     const [stars, setStars] = useState(utils.random(1, 9));
     const [availableNumbers, setAvailableNumbers] = useState(utils.range(1, 9));
     const [candidateNumbers, setCandidateNumbers] = useState([]);
@@ -53,6 +54,31 @@ const Game = props => {
         }
     })
 
+    const setGameState = (newCandidatesNumbers) => {
+        if (utils.sum(newCandidatesNumbers) !== stars) {
+            setCandidateNumbers(newCandidatesNumbers);
+        } else {
+            const newAvailableNumbers = availableNumbers.filter(n => !newCandidatesNumbers.includes(n));
+    
+            setStars(utils.randomSumIn(newAvailableNumbers, 9));
+            setAvailableNumbers(newAvailableNumbers);
+            setCandidateNumbers([]);
+        }
+    };
+
+
+    return { stars, availableNumbers, candidateNumbers, secondsLeft, setGameState };
+};
+
+const Game = props => {
+    const { 
+        stars,
+        availableNumbers,
+        candidateNumbers,
+        secondsLeft,
+        setGameState,
+    } = useGameState();
+
     const candidateAreWrong = utils.sum(candidateNumbers) > stars;
     const gameStatus = availableNumbers.length === 0 ? 'won' : secondsLeft === 0 ? 'lost' : 'active';
 
@@ -62,7 +88,7 @@ const Game = props => {
         }
 
         if (candidateNumbers.includes(number)) {
-            return candidateAreWrong ? 'wrong' : 'canditate';
+            return candidateAreWrong ? 'wrong' : 'candidate';
         }
 
         return 'available';
@@ -76,15 +102,7 @@ const Game = props => {
             candidateNumbers.concat(number) :
             candidateNumbers.filter(cn => cn !== number);
 
-        if (utils.sum(newCandidatesNumbers) !== stars) {
-            setCandidateNumbers(newCandidatesNumbers);
-        } else {
-            const newAvailableNumbers = availableNumbers.filter(n => !newCandidatesNumbers.includes(n));
-
-            setStars(utils.randomSumIn(newAvailableNumbers, 9));
-            setAvailableNumbers(newAvailableNumbers);
-            setCandidateNumbers([]);
-        }
+        setGameState(newCandidatesNumbers);
     };
 
 	return (
