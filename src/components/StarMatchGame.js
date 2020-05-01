@@ -16,7 +16,7 @@ const GamePad = props => {
         <button
             className="number"
             style={{ backgroundColor: colors[props.state] }}
-            onClick={() => console.log('Num', props.number)}
+            onClick={() => props.onClick(props.number, props.state)}
         >
             {props.number}
         </button>
@@ -42,6 +42,22 @@ const StarMatch = () => {
         return 'available';
     };
 
+    const onNumberClick = (number, currentStatus) => {
+        if (currentStatus === 'used') return;
+
+        const newCandidatesNumbers = candidateNumbers.concat(number);
+
+        if (utils.sum(newCandidatesNumbers) !== stars) {
+            setCandidateNumbers(newCandidatesNumbers);
+        } else {
+            const newAvailableNumbers = availableNumbers.filter(n => !newCandidatesNumbers.includes(n));
+
+            setStars(utils.randomSumIn(newAvailableNumbers, 9));
+            setAvailableNumbers(newAvailableNumbers);
+            setCandidateNumbers([]);
+        }
+    };
+
 	return (
 		<div className="star-match-game-app-container">
 		<div className="instructions">
@@ -56,6 +72,7 @@ const StarMatch = () => {
                         key={number}
                         state={numberStatus(number)}
                         number={number}
+                        onClick={onNumberClick}
                     />
                 )}
             </div>
